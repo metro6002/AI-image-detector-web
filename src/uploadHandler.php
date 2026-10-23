@@ -16,6 +16,7 @@ try {
     die("database connection failed " . $e->getMessage());
 }
 
+
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_FILES["image"])) {
     $targetDir = "uploads/";
     if (!file_exists($targetDir)) {
@@ -50,7 +51,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_FILES["image"])) {
         $verdictLabel = "Unknown";
         $confidenceScore = 0.0;
 
-        // Hugging Face classifiers typically return an array of precitions
+        // Hugging Face classifiers typically return an array of predictions
         if (is_array($result) && isset($result[0]['label'])) {
             $verdictLabel = $result[0]['label'];
             $confidenceScore = $result[0]['score'];
@@ -72,16 +73,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_FILES["image"])) {
 
 
         // Output results
-        echo "<h2>SynthID Analysis Result</h2>";
-        echo "<p class='alert alert-success'><strong>Verdict:</strong> {$verdictLabel}</p>";
+        echo "<h2>Analysis Result</h2>";
+        echo "<p class='alert alert-success'><strong>Verdict:</strong> {$verdictLabel} (Confidence: " . round($confidenceScore * 100, 2) . "%</p>";
         echo "<p>{$details}</p>";
         echo "<p class='text-muted'><small>Logged to local MySQL container database successfully.</small></p>";
-        echo "<a href='index.php' class='btn btn-primary'>Analyze Another Image</a>";
+        echo "<a href='processForm.php' class='btn btn-primary'>Analyze Another Image</a>";
         echo "</div></div>";
         
     } else {
         echo "Sorry, there was an error uploading your file.";
 
     }
-
 }
+?>
