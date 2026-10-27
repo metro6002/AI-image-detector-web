@@ -164,15 +164,15 @@ function format_bytes($bytes, $precision = 2): string {
             background: #eef2ff;
         }
         .verdict-badge-ai {
-            background: linear-gradient(135deg, #7c3aed, #9333ea);
+            background: var(--ai-color);
             color: #ffffff;
         }
         .verdict-badge-human {
-            background: linear-gradient(135deg, #059669, #10b981);
+            background: var(--human-color);
             color: #ffffff;
         }
         .verdict-badge-notice {
-            background: linear-gradient(135deg, #d97706, #f59e0b);
+            background: #f59e0b;
             color: #ffffff;
         }
         .badge-pill {
@@ -212,13 +212,11 @@ function format_bytes($bytes, $precision = 2): string {
 <body>
 
     <!-- Header / Navbar -->
-    <header class="app-navbar py-3 mb-4 shadow-sm">
+    <header class="app-navbar py-3 mb-4">
         <div class="container d-flex flex-wrap justify-content-between align-items-center">
             <div class="d-flex align-items-center gap-2">
-                <i class="bi bi-shield-check text-primary fs-3"></i>
                 <div>
                     <h5 class="mb-0 fw-bold">AI Image Detector</h5>
-                    <small class="text-muted">Single-Container LAMP Stack &bull; Sightengine <code>genai</code> API</small>
                 </div>
             </div>
             <div class="d-flex align-items-center gap-2 mt-2 mt-md-0">
@@ -287,7 +285,7 @@ function format_bytes($bytes, $precision = 2): string {
 
                         <!-- Submit Button -->
                         <div class="d-grid mt-4">
-                            <button type="submit" id="submitBtn" class="btn btn-primary btn-lg fw-semibold shadow-sm d-flex justify-content-center align-items-center gap-2">
+                            <button type="submit" id="submitBtn" class="btn btn-primary btn-lg fw-semibold d-flex justify-content-center align-items-center gap-2">
                                 <span id="btnSpinner" class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
                                 <i class="bi bi-cpu-fill" id="btnIcon"></i>
                                 <span id="btnText">Analyze Image</span>
