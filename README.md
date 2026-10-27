@@ -80,17 +80,12 @@ AI-image-detector-web/
    ```
 3. **Run the container** (single command – the `start.sh` script runs automatically inside the image):
    ```bash
-   docker run -d \
-     --name ai-detector \
-     -p 8080:80 \
-     -e DB_USER=root \
-     -e DB_PASS=secret_password \
-     -e DB_NAME=aidb \
-     -v "$(pwd)/src/uploads:/var/www/html/uploads" \
-     ai-image-detector-web
+   docker run -d -p 8080:80 --env-file .env ai-image-detector-app:latest
    ```
    - `-p 8080:80` maps the web UI to `http://localhost:8080`.
-   - The `-v` bind‑mount keeps uploaded images on the host for easy inspection.
+   - `-d` stands for detached mode i.e the contianer runs in the background.
+   - `--env-file .env` loads the environment variables in the current working directory.
+   
 4. Open your browser and navigate to **http://localhost:8080**.
 
 ---
