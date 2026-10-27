@@ -1,3 +1,14 @@
+# Environment files containing secrets
 .env
 .env.*
 !.env.example
+
+# Temporary user-uploaded files
+uploads/
+src/uploads/*
+!src/uploads/.gitkeep
+
+# System and editor artifacts
+.DS_Store
+Thumbs.db
+*.log

@@ -1,0 +1,16 @@
+# Version control
+.git
+.gitignore
+
+
+# Environment and sensitive configuration
+.env
+.env.*
+
+# Upload directories (temporary uploaded images)
+uploads/
+src/uploads/*
+!src/uploads/.gitkeep
+
+# Legacy or build directories
+docker/
